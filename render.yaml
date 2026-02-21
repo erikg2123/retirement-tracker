@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: retirement-tracker-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install && npm run build
+    startCommand: node dist/index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+
+  - type: static
+    name: retirement-tracker-app
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://retirement-tracker-api.onrender.com/api
