@@ -2,24 +2,24 @@ export type ContributionMode = 'fixed' | 'salary'
 export type FilingStatus     = 'single' | 'married'
 
 export interface RetirementPlan {
-  currentAge:              number
-  retirementAge:           number
-  currentSavings:          number
-  currentSavingsRoth:      number
-  expectedReturnRate:      number
-  inflationRate:           number
-  monthlySpendingGoal:     number
-  rothPct:                 number
-  filingStatus:            FilingStatus
-  contributionMode:        ContributionMode
-  annualContribution:      number
-  currentSalary:           number
-  salaryContributionPct:   number
-  expectedSalaryGrowthPct: number
-  lifeExpectancy:          number
-  dieWithTarget:           number   // ← NEW
-  postRetirementReturnRate: number
-  withdrawalRate:          number
+  currentAge:               number
+  retirementAge:            number
+  currentSavings:           number
+  currentSavingsRoth:       number
+  expectedReturnRate:       number
+  inflationRate:            number
+  monthlySpendingGoal:      number
+  rothPct:                  number
+  filingStatus:             'single' | 'married'
+  contributionMode:         'fixed' | 'salary'
+  annualContribution:       number
+  currentSalary:            number
+  salaryContributionPct:    number
+  expectedSalaryGrowthPct:  number
+  lifeExpectancy:           number
+  dieWithTarget:            number        // ← NEW
+  postRetirementReturnRate: number        // ← NEW
+  withdrawalRate:           number        // ← NEW
 }
 
 export interface YearlyProjection {
