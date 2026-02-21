@@ -2,8 +2,8 @@ import express    from 'express'
 import cors       from 'cors'
 import dotenv     from 'dotenv'
 import projections from './routes/projections'
-import solve       from './routes/solve'
-import plan        from './routes/plan'
+import solverRoute from './routes/solver'
+import planRoute   from './routes/plan'
 
 dotenv.config()
 
@@ -14,8 +14,8 @@ app.use(cors())   // ← allows all origins so Render frontend can call it
 app.use(express.json())
 
 app.use('/api/projections', projections)
-app.use('/api/solve',       solve)
-app.use('/api/plan',        plan)
+app.use('/api/solve',       solverRoute)
+app.use('/api/plan',        planRoute)
 
 app.listen(PORT, () => {
   console.log(`✅  Backend running on port ${PORT}`)
