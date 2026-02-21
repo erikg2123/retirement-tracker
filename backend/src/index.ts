@@ -3,24 +3,22 @@ import cors       from 'cors'
 import dotenv     from 'dotenv'
 import projections from './routes/projections'
 import solve       from './routes/solve'
-import planRouter        from './routes/plan'
+import plan        from './routes/plan'
 
 dotenv.config()
 
 const app  = express()
-const PORT = process.env.PORT ?? 3001
+const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3001
 
-app.use(cors({ origin: ['http://localhost:3000', 'http://localhost:5173'] }))
+app.use(cors())   // ← allows all origins so Render frontend can call it
 app.use(express.json())
 
-app.get('/health', (_, res) => res.json({ status: 'ok', ts: new Date().toISOString() }))
-
 app.use('/api/projections', projections)
-app.use('/api/solve', solve)
-app.use('/api/plan',        planRouter)
+app.use('/api/solve',       solve)
+app.use('/api/plan',        plan)
 
 app.listen(PORT, () => {
-  console.log(`✅ RetireOS backend running on http://localhost:${PORT}`)
+  console.log(`✅  Backend running on port ${PORT}`)
 })
 
 // No scraping needed — 2025 federal brackets (MFJ / Single)

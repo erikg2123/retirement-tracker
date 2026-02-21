@@ -1,6 +1,6 @@
 import type { RetirementPlan, YearlyProjection, DrawdownYear, Milestone } from '../types'
 
-const BASE = 'http://localhost:3001/api'
+const BASE = (import.meta.env.VITE_API_URL as string) || 'http://localhost:3001/api'
 
 export interface ProjectionsResponse {
   projections:      YearlyProjection[]
